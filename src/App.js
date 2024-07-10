@@ -19,6 +19,8 @@ const theme = createTheme({
 });
 
 function App() {
+    document.title = "Maungawhau Institute of Studies (MIS)"
+
   return (
       <ThemeProvider theme={theme}>
           <Router>

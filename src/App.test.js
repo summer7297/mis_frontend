@@ -6,5 +6,5 @@ import '@testing-library/jest-dom';
 test('loads inputs', async () => {
     render(<Dashboard />);
 
-    expect(screen.getByText("Welcome back!")).toBeInTheDocument();
+    expect(screen.getByText("My courses")).toBeInTheDocument();
 });
