@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material";
+
 import { Login } from "./pages/Login"
-import {ThemeProvider, createTheme} from "@mui/material";
+import { Register } from "./pages/Register";
 
 const theme = createTheme({
   palette: {
@@ -20,6 +23,7 @@ function App() {
           <BrowserRouter>
               <Routes>
                   <Route path="/" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
               </Routes>
           </BrowserRouter>
       </ThemeProvider>
