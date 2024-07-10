@@ -1,10 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import App from "./App";
+import { render, screen } from '@testing-library/react';
+import { Dashboard } from './pages/Dashboard';
+import '@testing-library/jest-dom';
 
+test('loads inputs', async () => {
+    render(<Dashboard />);
 
-test('renders correctly', () => {
-const component = renderer.create(<App />);
-const tree = component.toJSON();
-expect(tree).toMatchSnapshot();
+    expect(screen.getByText("Welcome back!")).toBeInTheDocument();
 });

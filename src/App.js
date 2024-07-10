@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
 
 import { Login } from "./pages/Login"
 import { Register } from "./pages/Register";
+import { Dashboard } from "./pages/Dashboard";
 
 const theme = createTheme({
   palette: {
@@ -20,12 +21,13 @@ const theme = createTheme({
 function App() {
   return (
       <ThemeProvider theme={theme}>
-          <BrowserRouter>
+          <Router>
               <Routes>
                   <Route path="/" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
-          </BrowserRouter>
+          </Router>
       </ThemeProvider>
   )
 }
