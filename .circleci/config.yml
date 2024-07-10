@@ -1,8 +1,7 @@
-# This config was automatically generated from your source code
-# Stacks detected: cicd:github-actions:.github/workflows,deps:node:.
 version: 2.1
 orbs:
   node: circleci/node@5
+
 jobs:
   test-node:
     # Install node dependencies and run tests
@@ -13,7 +12,10 @@ jobs:
           pkg-manager: npm
       - run:
           name: Run tests
-          command: npm test --passWithNoTests
+          command: |
+            export NODE_OPTIONS=--openssl-legacy-provider
+            npm test --passWithNoTests
+
   build-node:
     # Build node project
     executor: node/default
@@ -22,7 +24,9 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm run build
+          command: |
+            export NODE_OPTIONS=--openssl-legacy-provider
+            npm run build
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
           command: mkdir -p ~/artifacts
@@ -33,6 +37,7 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
+
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
@@ -42,6 +47,7 @@ jobs:
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
+
 workflows:
   build-and-test:
     jobs:
