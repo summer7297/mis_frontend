@@ -6,9 +6,9 @@ export const LoginForm = () => {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
-    const [pw, setPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [usernameError, setUsernameError] = useState('');
-    const [passworderror, setPasswordError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
     const handleInputChange = (e, setter) => {
         setter(e.target.value);
@@ -22,7 +22,7 @@ export const LoginForm = () => {
             return;
         }
 
-        if (pw === "") {
+        if (password === "") {
             setPasswordError('This field is required');
             return;
         }
@@ -32,7 +32,7 @@ export const LoginForm = () => {
 
         let raw = JSON.stringify({
           "username": username,
-          "password": pw
+          "password": password
         });
 
         let requestOptions = {
@@ -77,13 +77,13 @@ export const LoginForm = () => {
                     justifyContent: "center"
                 }}
             >
-                            <Stack
-                                gap={6}
-                                sx={{
-                                    alignItems: "center",
-                                    justifyContent: "center"
-                                }}
-                            >
+                <Stack
+                    gap={6}
+                    sx={{
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}
+                >
                     <Typography variant="h5" sx={{fontWeight: "bold"}}>Maungawhau Institute of Studies</Typography>
                         <Stack gap={2}>
                             <Typography variant="h6">Sign in with your account</Typography>
@@ -106,8 +106,8 @@ export const LoginForm = () => {
                                 }}
                                 type="password"
                                 required
-                                error={!!passworderror}
-                                helperText={passworderror}
+                                error={!!passwordError}
+                                helperText={passwordError}
                                 onChange={(e) => handleInputChange(e, setPassword)}
                             />
                         </Stack>
@@ -129,10 +129,7 @@ export const LoginForm = () => {
                                     width: "356px",
                                     color: "#FFFFFF"
                                 }}
-                                onClick={() => {
-                                    console.log("clicked")
-                                    navigate("/register")
-                                }}
+                                onClick={() => navigate("/register")}
                             >
                                 Register
                             </Button>
