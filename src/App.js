@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 
 import { Register } from "./pages/Register";
 import { Dashboard } from "./pages/Dashboard";
+import {Login} from "./pages/Login.ts";
 
 const theme = createTheme({
   palette: {
@@ -24,8 +25,9 @@ function App() {
       <ThemeProvider theme={theme}>
           <Router>
               <Routes>
-                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
           </Router>
       </ThemeProvider>
